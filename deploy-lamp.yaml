@@ -1,0 +1,28 @@
+---
+- name: "LAMP optuigen "
+  hosts: mijnvms
+
+  tasks:
+    - name: APT bij werken
+      apt: update_cache=yes
+      become: true
+      become_method: sudo
+      become_user: root
+
+    - name: Installeer apache
+      apt: name=apache2 state=present
+      become: true
+      become_method: sudo
+      become_user: root
+
+    - name: Installeer php
+      apt: name=php state=present
+      become: true
+      become_method: sudo
+      become_user: root
+
+    - name: Install mariadb
+      apt: name=mariadb-server state=present
+      become: true
+      become_method: sudo
+      become_user: root
